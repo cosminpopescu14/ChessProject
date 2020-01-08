@@ -20,8 +20,24 @@ namespace SolarWinds.MSP.Chess
 
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
-            throw new NotImplementedException("Need to implement ChessBoard.IsLegalBoardPosition()");
+            bool OnBoad = IsOnBoad(xCoordinate, yCoordinate);//piece must be on the board
+            bool PositiveCoords = HasPositiveCoords(xCoordinate, yCoordinate); //piece must has positive coords
+
+            if (!(OnBoad && PositiveCoords))
+            {
+                return false;
+            }
+            return true;
         }
 
+        private static bool HasPositiveCoords(int xCoordinate, int yCoordinate)
+        {
+            return xCoordinate >= 0 && yCoordinate >= 0;
+        }
+
+        private static bool IsOnBoad(int xCoordinate, int yCoordinate)
+        {
+            return xCoordinate <= MaxBoardWidth && yCoordinate <= MaxBoardHeight;
+        }
     }
 }
