@@ -20,24 +20,14 @@ namespace SolarWinds.MSP.Chess
 
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
-            bool OnBoad = IsOnBoad(xCoordinate, yCoordinate);//piece must be on the board
-            bool PositiveCoords = HasPositiveCoords(xCoordinate, yCoordinate); //piece must has positive coords
+            bool OnBoad(int X, int Y) => X <= MaxBoardWidth && Y <= MaxBoardHeight;
+            bool PositiveCoords(int X, int Y) => xCoordinate >= 0 && yCoordinate >= 0;
 
-            if (!(OnBoad && PositiveCoords))
+            if (!(OnBoad(xCoordinate, yCoordinate) && PositiveCoords(xCoordinate, yCoordinate)))
             {
                 return false;
             }
             return true;
-        }
-
-        private static bool HasPositiveCoords(int xCoordinate, int yCoordinate)
-        {
-            return xCoordinate >= 0 && yCoordinate >= 0;
-        }
-
-        private static bool IsOnBoad(int xCoordinate, int yCoordinate)
-        {
-            return xCoordinate <= MaxBoardWidth && yCoordinate <= MaxBoardHeight;
         }
     }
 }
