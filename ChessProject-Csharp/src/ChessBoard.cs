@@ -21,9 +21,9 @@ namespace SolarWinds.MSP.Chess
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
             bool OnBoad(int X, int Y) => X <= MaxBoardWidth && Y <= MaxBoardHeight;
-            bool PositiveCoords(int X, int Y) => xCoordinate >= 0 && yCoordinate >= 0;
+            bool PositiveCoords() => xCoordinate >= 0 && yCoordinate >= 0;
 
-            if (!(OnBoad(xCoordinate, yCoordinate) && PositiveCoords(xCoordinate, yCoordinate)))
+            if (!(OnBoad(xCoordinate, yCoordinate) && PositiveCoords()))
             {
                 return false;
             }
